@@ -1,6 +1,19 @@
+@import 'variables';
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
 body {
     margin: 0;
     padding: 0;
+    background-color: $background;
+    font-family: "Raleway";
+    font-size: 62.5%;
+    overflow: hidden;
 }
 
 @mixin flex-center {
@@ -9,12 +22,206 @@ body {
     align-items: center;
 }
 
+@mixin flex-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .app,
-.wrap {
+.wrap,
+.content {
     @include flex-center;
     width: 100%;
+    min-height: 100vh;
+}
+
+.app {
+    min-height: 100vh;
 }
 
 .wrap {
     width: 75%;
+    flex-direction: column;
+
+    header {
+        @include flex-center;
+        width: 100%;
+        height: 7vh;
+        
+        h1 {
+            color: $primary;
+            span {
+                color: $text;
+                font-size: 0.8rem;
+            }
+        }
+        a svg {
+            width: 27px;
+            margin-right: 10px;
+            fill: $text;
+        }
+    }
+}
+
+
+.content {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 35vw;
+
+
+    ::-webkit-scrollbar
+    {
+        width: 10px;
+        background-color: #2d323a;
+    }
+
+    ::-webkit-scrollbar-thumb
+    {
+        background-color: #1b1f25;
+    }
+
+    .chat {
+        @include flex-top;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        flex-direction: column;
+        height: 83vh;
+        overflow-y: scroll;
+        width: 100%;
+    }
+
+    .input-box {
+        @include flex-center;
+        background-color: $container;
+        height: 6vh;
+        width: 100%;
+        border-radius: 5px;
+
+        input {
+            width: 95%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: $text;
+            padding: 0px 15px;
+        }
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: 0 15px;
+            height: 100%;
+            cursor: pointer;
+            svg {
+                width: 16px;
+                height: 16px;
+                fill: $primary;
+            }
+        }
+
+    }
+
+    .chat-message {
+        margin-bottom: 35px;
+        width: 95%;
+        display: flex;
+
+        &.sender {
+            flex-direction: row-reverse;
+
+            svg {
+                margin-left: 15px;
+                margin-right: unset;
+                background-color: $primary;
+            }
+
+            .message {
+                border-radius: 5px 0px 5px 5px;
+                background-color: $container-lighter;
+            }
+        }
+
+        svg {
+            margin-right: 15px;
+            width: 32px;
+            background: white;
+            border-radius: 50%;
+            fill: $background;
+            padding: 5px 7px;
+        }
+        
+
+        .message {
+            background-color: $container;
+            border-radius: 0px 5px 5px 5px;
+            padding: 10px 10px;
+
+            p {
+                color: $text;
+                margin-top: 5px;
+                margin-bottom: 7px;
+                font-size: 1rem;
+            }
+            span {
+                color: $primary;
+                font-size: 0.8rem;
+                display: flex;
+                width: 100%;
+                justify-content: right;
+
+                &.date {
+                    font-size: 0.7rem;
+                    font-family: "Roboto";
+                    color: #fff;
+                }
+            }
+        }
+    }    
+}
+
+
+/**
+* Responsive
+*/
+@media screen and (max-width: 1200px) {
+    .wrap {
+        width: 80%;
+    }
+
+    .content {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .wrap {
+        width: 90%;
+    }
+
+    .content {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .wrap {
+        width: 95%;
+    }
+
+    .content {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrap {
+        width: 100%;
+    }
+
+    .content {
+        width: 95%;
+    }
 }
