@@ -47,7 +47,7 @@ function Home({ socket }: any) {
         <Chat socket={socket} />
         <div className="input-box">
           <input type="text" ref={msgRef} placeholder="Type a message" />
-          <button>
+          <button onClick={submitMessage}>
             <FontAwesomeIcon icon={faPaperPlane} />
           </button>
         </div>
