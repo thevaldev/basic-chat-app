@@ -1,6 +1,12 @@
-@import "variables";
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@use "fonts";
+
+:root {
+  --primary: #ff9073;
+  --text: #e4e4e4;
+  --background: #22272e;
+  --container: #2f363d;
+  --container-lighter: #4b525a;
+}
 
 * {
   box-sizing: border-box;
@@ -10,8 +16,9 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: $background;
-  font-family: "Raleway";
+  background-color: var(--background);
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 300;
   font-size: 62.5%;
   overflow: hidden;
 }
@@ -50,16 +57,16 @@ body {
     height: 7vh;
 
     h1 {
-      color: $primary;
+      color: var(--primary);
       span {
-        color: $text;
+        color: var(--text);
         font-size: 0.8rem;
       }
     }
     svg {
       font-size: 1.5rem;
       margin-right: 10px;
-      color: $text;
+      color: var(--text);
     }
   }
 }
@@ -90,7 +97,7 @@ body {
 
   .input-box {
     @include flex-center;
-    background-color: $container;
+    background-color: var(--container);
     height: 6vh;
     width: 100%;
     border-radius: 5px;
@@ -101,7 +108,7 @@ body {
       background-color: transparent;
       border: none;
       outline: none;
-      color: $text;
+      color: var(--text);
       padding: 0px 15px;
     }
     button {
@@ -114,7 +121,7 @@ body {
       svg {
         width: 16px;
         height: 16px;
-        color: $primary;
+        color: var(--primary);
       }
     }
   }
@@ -130,12 +137,12 @@ body {
       .avatar {
         margin-left: 15px;
         margin-right: unset;
-        background-color: $primary;
+        background-color: var(--primary);
       }
 
       .message {
         border-radius: 5px 0px 5px 5px;
-        background-color: $container-lighter;
+        background-color: var(--container-lighter);
       }
     }
 
@@ -150,24 +157,24 @@ body {
         display: block;
         font-size: 1.2rem;
         width: 32px;
-        color: $background;
+        color: var(--background);
       }
     }
 
     .message {
-      background-color: $container;
+      background-color: var(--container);
       border-radius: 0px 5px 5px 5px;
       padding: 10px 10px;
       word-break: break-all;
 
       p {
-        color: $text;
+        color: var(--text);
         margin-top: 5px;
         margin-bottom: 7px;
         font-size: 1rem;
       }
       span {
-        color: $primary;
+        color: var(--primary);
         font-size: 0.8rem;
 
         &.date {
